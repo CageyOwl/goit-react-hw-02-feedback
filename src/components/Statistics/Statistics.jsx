@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
 import StatisticsItem from './StatisticsItem';
+import css from './statistics.module.css';
 
 export default function Statistics({ appState, total, positivePerc }) {
   let stateKeys = Object.keys(appState);
 
   return (
-    <ul>
+    <ul className={css.statistics}>
       {stateKeys.map(item => (
         <StatisticsItem key={item} name={item} value={appState[item]} />
       ))}
-      <li key="total">Total: {total}</li>
-      <li key="pos-feedback">Positive feedbacks: {positivePerc}%</li>
+      <li className={css.statistics__item} key="total">
+        Total: {total}
+      </li>
+      <li className={css.statistics__item} key="pos-feedback">
+        Positive feedbacks: {positivePerc}%
+      </li>
     </ul>
   );
 }
